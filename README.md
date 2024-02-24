@@ -1,7 +1,7 @@
     Pizza Shop
 
-    Dashboard para gerenciamento de lojas de pedidos contruido em react puro, que possibilita o lojista a gerenciar pedidos,status, métricas como pedidos mensais
-    obter detalhes sobre os pedidos
+    Dashboard para gerenciamento de lojas de pedidos construido em react puro, que possibilita o lojista
+    a gerenciar pedidos,status, métricas como pedidos mensais e obter detalhes sobre os pedidos.
 
     Conceitos e Tecnologias:
 
