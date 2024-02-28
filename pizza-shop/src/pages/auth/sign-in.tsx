@@ -3,6 +3,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import { z } from "zod";
 
 const signInForm = z.object({
@@ -19,7 +20,15 @@ export function SignIn() {
     formState: { isSubmitting },
   } = useForm<SignInForm>();
 
-  function handleSignIn(data: SignInForm) {}
+  async function handleSignIn(data: SignInForm) {
+    // magic link = quando é enviado um link no email da pessoa e quando ela clica ela está autenticada
+    toast.success("Enviamos um link de autenticação para seu e-mail", {
+      action: {
+        label: "Reenviar",
+        onClick: () => handleSignIn(data),
+      },
+    });
+  }
 
   return (
     <>
