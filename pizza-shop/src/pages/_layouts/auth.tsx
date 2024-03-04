@@ -15,7 +15,7 @@ export function AuthLayout() {
         </footer>
       </div>
 
-      <div className="flex flex-col justify-center items-center">
+      <div className="flex flex-col justify-center items-center relative">
         {/* Outlet mostra onde o componente de fora vai ficar dentro do layout */}
         <Outlet />
       </div>
