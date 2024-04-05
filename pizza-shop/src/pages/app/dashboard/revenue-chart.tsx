@@ -39,11 +39,18 @@ const data = [
   },
 ];
 
-import { Line, LineChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
+import {
+  CartesianGrid,
+  Line,
+  LineChart,
+  ResponsiveContainer,
+  XAxis,
+  YAxis,
+} from "recharts";
 
 export function RevenueChart() {
   return (
-    <Card className="col-span-4">
+    <Card className="col-span-6">
       <CardHeader className="flex-row items-center justify-between pb-8">
         <div className="space-y-1">
           <CardTitle className="text-base font-medium">
@@ -67,6 +74,8 @@ export function RevenueChart() {
                 })
               }
             />
+
+            <CartesianGrid vertical={false} className="stroke-muted" />
             <Line
               type="linear"
               strokeWidth={2}
