@@ -5,6 +5,7 @@ import { AppLayout } from "./pages/_layouts/app";
 import { AuthLayout } from "./pages/_layouts/auth";
 import { SignUp } from "./pages/auth/sign-up";
 import { Orders } from "./pages/app/orders/orders";
+import { NotFound } from "./pages/404";
 
 /* 
     Cada objeto dentro do array é uma rota da aplicação
@@ -15,6 +16,7 @@ export const router = createBrowserRouter([
     // modo para fazer o layout, e como children enviar o conteudo especifico dentro de um objeto igual quando se cria uma rota
     path: "/",
     element: <AppLayout />,
+    errorElement: <NotFound />,
     children: [
       {
         path: "/",
