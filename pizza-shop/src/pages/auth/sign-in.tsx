@@ -1,6 +1,8 @@
+import { signIn } from "@/api/sign-in";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useMutation } from "@tanstack/react-query";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
@@ -21,7 +23,16 @@ export function SignIn() {
     formState: { isSubmitting },
   } = useForm<SignInForm>();
 
+  // todo => mutação é qualquer ação que nao seja uma ação de listagem, todo POST,GET,PUT é uma mutation , GET é uma query
+  // o mutateAsync é a funcao que faz com que o SignIn seja chamado (a funcao signIn é a funcao que faz a tipagem dos dados da requisicao)
+  const { mutateAsync: authenticate } = useMutation({
+    /* qual funcao vai ser disparada para fazer a mutação */
+    mutationFn: signIn,
+  });
+
   async function handleSignIn(data: SignInForm) {
+    await authenticate({ email: data.email });
+
     // magic link = quando é enviado um link no email da pessoa e quando ela clica ela está autenticada
     toast.success("Enviamos um link de autenticação para seu e-mail", {
       action: {
