@@ -1,0 +1,7 @@
+React query é uma serie de hooks para facilitar a comunicacao do front end e back end, falicita requisiçoes
+
+Tem uma parte sensacional que é a parte de memoização das requisições entre omponentes
+
+Exemplo:
+Fazendo um requisicação que busca uma listagem de pedidos em um componente, mas outro precisa tambem acessar esses dados, o react query cria um cache da requisicação
+Ele evita requisições duplicadas
