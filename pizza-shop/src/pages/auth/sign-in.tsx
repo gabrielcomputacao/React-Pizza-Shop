@@ -5,7 +5,7 @@ import { Label } from "@/components/ui/label";
 import { useMutation } from "@tanstack/react-query";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { toast } from "sonner";
 import { z } from "zod";
 
@@ -17,11 +17,18 @@ const signInForm = z.object({
 type SignInForm = z.infer<typeof signInForm>;
 
 export function SignIn() {
+  // É uma funcao que o primeiro parametro retorna os dados da url enviados como parametro e o segundo é uma funcao para atualizar esses dados
+  const [searchParams] = useSearchParams();
+
   const {
     register,
     handleSubmit,
     formState: { isSubmitting },
-  } = useForm<SignInForm>();
+  } = useForm<SignInForm>({
+    defaultValues: {
+      email: searchParams.get("email") ?? "",
+    },
+  });
 
   // todo => mutação é qualquer ação que nao seja uma ação de listagem, todo POST,GET,PUT é uma mutation , GET é uma query
   // o mutateAsync é a funcao que faz com que o SignIn seja chamado (a funcao signIn é a funcao que faz a tipagem dos dados da requisicao)
