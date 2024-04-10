@@ -11,6 +11,7 @@ import {
 import { useQuery } from "@tanstack/react-query";
 import { getProfile } from "@/api/get-profile";
 import { Skeleton } from "./ui/skeleton";
+import { getManagedRestaurant } from "@/api/get-managed-restaurant";
 
 export function AccountMenu() {
   /*  react query atraves do queryKey identifica qual requisicao esta sendo feita, se ja tiver sido feito ela nao vai fazer novamente
@@ -20,12 +21,10 @@ export function AccountMenu() {
     queryFn: getProfile,
   });
 
-  const { data: manafedProfile, isLoading: isLoadingManagedProfile } = useQuery(
-    {
-      queryKey: ["profile"],
-      queryFn: getProfile,
-    }
-  );
+  const { isLoading: isLoadingManagedProfile } = useQuery({
+    queryKey: ["managedProfile"],
+    queryFn: getManagedRestaurant,
+  });
 
   return (
     <DropdownMenu>
@@ -36,13 +35,13 @@ export function AccountMenu() {
           /* esse select-none impossibilita o  usuario de selecionar o nome, ou a escrita do texto */
           className="flex items-center gap-2 select-none"
         >
-          {isLoadingManagedProfile ? <Skeleton /> : "Pizza Shop"}
+          {isLoadingManagedProfile ? <Skeleton /> : "Profile"}
           <ChevronDown className="w-4 h-4" />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-56">
         <DropdownMenuLabel className="flex flex-col">
-          <span>Gabriel</span>
+          <span>Gabriel {profile!.name} </span>
           <span className="text-xs font-normal text-muted-foreground">
             Gabriel@email.com
           </span>
